@@ -125,8 +125,8 @@
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2"><a href="{{  url('/') }}" class="nav-link p-0 text-muted">Home</a></li>
                             <li class="nav-item mb-2"><a href="{{  url('/') }}" class="nav-link p-0 text-muted">Clubs</a></li>
-                            <li class="nav-item mb-2"><a href="{{  url('/') }}" class="nav-link p-0 text-muted">Contact us</a></li>
-                            <li class="nav-item mb-2"><a href="{{  url('/') }}" class="nav-link p-0 text-muted">About</a></li>
+                            <li class="nav-item mb-2"><a href="{{  route('contact.index') }}" class="nav-link p-0 text-muted">Contact us</a></li>
+                            <li class="nav-item mb-2"><a href="{{  route('about') }}" class="nav-link p-0 text-muted">About</a></li>
                         </ul>
                     </div>
         
@@ -144,7 +144,7 @@
                     </div> -->
         
                     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                        <p>© 2024 Iron Anchor Athletics, Inc. All rights reserved.</p>
+                        <p>© {{ date('Y') }} Iron Anchor Athletics, Inc. All rights reserved.</p>
                         <ul class="list-unstyled d-flex">
                             <li class="ms-3"><a class="link-dark" href="https://www.facebook.com/victor.pausan" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                                         <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />

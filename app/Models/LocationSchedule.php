@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class LocationSchedule extends Model
 {
     use HasFactory;
+    public function gymLocation()
+    {
+        return $this->hasMany(GymLocation::class);
+    }
 
-    public $fillable=[
-        'gym-location-id',
-        'schedule-id',
-    ];
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

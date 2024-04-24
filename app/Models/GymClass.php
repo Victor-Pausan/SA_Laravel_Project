@@ -11,7 +11,6 @@ class GymClass extends Model
 
     public $fillable=[
         'name',
-        'gym-location-id',
         'description',
         'date',
         'time',
@@ -23,5 +22,10 @@ class GymClass extends Model
     public function memberFeedback()
     {
         return $this->belongsTo(MemberFeedback::class);
+    }
+
+    public function gymLocation()
+    {
+        return $this->hasOne(GymLocation::class);
     }
 }

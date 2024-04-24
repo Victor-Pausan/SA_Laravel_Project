@@ -14,4 +14,9 @@ class Schedule extends Model
         'opening-time',
         'closing-time',
     ];
+
+    public function locationSchedule()
+    {
+        return $this->belongsTo(LocationSchedule::class);
+    }
 }

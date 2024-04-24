@@ -24,4 +24,14 @@ class GymLocation extends Model
     {
         return $this->belongsTo(Member::class);
     }
+
+    public function locationSchedule()
+    {
+        return $this->belongsTo(LocationSchedule::class);
+    }
+
+    public function gymClass()
+    {
+        return $this->belongsTo(GymClass::class);
+    }
 }
