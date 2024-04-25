@@ -47,6 +47,12 @@
                                     <a class="nav-link navbar-brand" href="{{ route('login') }}" title="Login">Log in</a>
                                 </li>
                             @endif
+
+                            @if(Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link navbar-brand" href="{{ route('register') }}" title="Login">Get started</a>
+                                </li>
+                            @endif
                         @else
                             @if(Route::has('home'))
                                 <li class="nav-item">

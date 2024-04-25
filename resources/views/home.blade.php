@@ -13,7 +13,9 @@
         <h1 class="card-title">ELITE TRAINING.</h1>
         <h1 class="card-title">UNBEATABLE RESULTS.</h1>
         <p class="card-text">Join now or stay average.</p>
-        <a href="{{ route('register') }}" class="btn btn-light">Get started.</a>
+        <button type="button" class="btn btn-light btn-lg">
+            <a href="{{ route('register') }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">Get started.</a>
+        </button>
     </span>
 </section>
 <section class="secondary-section">
@@ -27,7 +29,7 @@
         <h2 class="square-title">Membership with benefits</h2>
         <p class="square-p">Unrivaled Group Fitness classes. Unparalleled Personal Training. Studios that
             inspire you to perform and luxury amenities that keep you feeling your best.</p>
-        <a href="{{ url('/') }}" title="Comming soon">
+        <a href="{{ route('memberships') }}" title="Comming soon">
             <p class="square-p">View membership plans</p>
         </a>
     </div>
