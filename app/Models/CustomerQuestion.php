@@ -10,8 +10,8 @@ class CustomerQuestion extends Model
     use HasFactory;
 
     public $fillable=[
-        'first-name',
-        'last-name',
+        'first_name',
+        'last_name',
         'email',
         'subject',
         'message',

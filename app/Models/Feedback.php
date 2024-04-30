@@ -12,7 +12,6 @@ class Feedback extends Model
     public $fillable=[
         'rating',
         'comment',
-        'date'
     ];
 
     public function memberFeedback()

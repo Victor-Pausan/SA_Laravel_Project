@@ -12,7 +12,7 @@ class State extends Model
     public $fillable=[
         'name',
         'info',
-        'picture-path'
+        'picture_path'
     ];
 
     public function gymLocation()

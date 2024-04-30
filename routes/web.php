@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\StatesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::view('/about', 'about')->name('about');
 
@@ -32,9 +33,11 @@ Auth::routes();
 
 Route::get('/memberships', [MembershipController::class, 'index'])->name('memberships');
 
-//In dev
-Route::get('/account', [AccountController::class, 'index'])->name("account");
+Route::prefix('states')->group(function() {
+    Route::get('/', [StatesController::class, 'index'])->name('states');
+    Route::get('/{id}', [StatesController::class, 'show'])->name('states.show');
+});
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/account', [AccountController::class, 'index'])->name("account");
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [AccountController::class, 'index'])->name("account");
+});

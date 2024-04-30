@@ -10,9 +10,9 @@ class Schedule extends Model
     use HasFactory;
 
     public $fillable=[
-        'day-of-week',
-        'opening-time',
-        'closing-time',
+        'day_of_week',
+        'opening_time',
+        'closing_time',
     ];
 
     public function locationSchedule()

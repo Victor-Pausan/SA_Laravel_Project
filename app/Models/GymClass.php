@@ -9,14 +9,16 @@ class GymClass extends Model
 {
     use HasFactory;
 
+    protected $table = 'classes';
+
     public $fillable=[
         'name',
         'description',
         'date',
         'time',
         'duration',
-        'trainer-name',
-        'picture-path',
+        'trainer_name',
+        'picture_path',
     ];
 
     public function memberFeedback()

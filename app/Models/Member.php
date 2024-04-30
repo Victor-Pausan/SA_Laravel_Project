@@ -11,8 +11,8 @@ class Member extends Model
 
     public $fillable=[
         'address',
-        'membership-start-date',
-        'membership-end-date', 
+        'membership_start_date',
+        'membership_end_date', 
     ];
 
     public function user()

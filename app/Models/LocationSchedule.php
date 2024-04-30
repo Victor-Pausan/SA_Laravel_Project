@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class LocationSchedule extends Model
 {
     use HasFactory;
+
+    protected $table = 'location_schedules';
     public function gymLocation()
     {
         return $this->hasMany(GymLocation::class);

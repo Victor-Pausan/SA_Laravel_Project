@@ -9,10 +9,12 @@ class GymLocation extends Model
 {
     use HasFactory;
 
+    protected $table = 'gym_locations';
+
     public $fillable=[
         'address',
         'name',
-        'picture-path'
+        'picture_path'
     ];
 
     public function state()
