@@ -44,7 +44,7 @@
         <h2 class="square-title">Where Luxury and Fitness Meet</h2>
         <p class="square-p">Clubs that deliver an unrivaled experience to maximize your potential, and
             luxury amenities that keep you performing at your best.</p>
-        <a href="{{ url('/') }}" title="Comming soon">
+        <a href="{{ route('clubs') }}" title="Comming soon">
             <p class="square-p">View clubs</p>
         </a>
     </div>

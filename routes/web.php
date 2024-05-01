@@ -33,9 +33,9 @@ Auth::routes();
 
 Route::get('/memberships', [MembershipController::class, 'index'])->name('memberships');
 
-Route::prefix('states')->group(function() {
-    Route::get('/', [StatesController::class, 'index'])->name('states');
-    Route::get('/{id}', [StatesController::class, 'show'])->name('states.show');
+Route::prefix('clubs')->group(function() {
+    Route::get('/', [StatesController::class, 'index'])->name('clubs');
+    Route::get('/{id}', [StatesController::class, 'show'])->name('clubs.show');
 });
 
 Route::middleware('auth')->group(function () {

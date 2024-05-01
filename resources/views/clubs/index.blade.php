@@ -13,7 +13,7 @@
                 @foreach ($states as $state)
                     <option name="state" value="{{ $state->id }}">{{ $state->name }} </option>
                 @endforeach
-                <form id="state-form" action="{{ route('states.show', ['id' => '$state->id']) }}"" method="POST" class="d-none">
+                <form id="state-form" action="{{ route('clubs.show', ['id' => '$state->id']) }}"" method="POST" class="d-none">
                     @csrf
                 </form>
             </select>
@@ -24,7 +24,7 @@
         <h2 class="text-left mb-5">Featured Clubs</h2>
         <div class="row">
             @foreach ($states as $state)
-                <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ route('states.show', ['id' => $state->id]) }}">
+                <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ route('clubs.show', ['id' => $state->id]) }}">
                     <div class="card text-bg-light mb-4 p-3">
                         <div class="row g-0">
                             <div class="col-md-8">

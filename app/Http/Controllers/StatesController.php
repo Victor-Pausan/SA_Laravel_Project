@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GymLocation;
 use Illuminate\Http\Request;
 use App\Models\State;
 
@@ -14,7 +15,7 @@ class StatesController extends Controller
     {
         $states = State::all();
 
-        return view('states.index', ['states' => $states]);
+        return view('clubs.index', ['states' => $states]);
     }
 
     /**
@@ -38,7 +39,9 @@ class StatesController extends Controller
      */
     public function show(string $id)
     {
-        return $id;
+        $state = State::where('id', $id)->first();
+        $locations = GymLocation::where('state_id', $id)->get();
+        return view('clubs.show', ['locations' => $locations, 'state' => $state]);
     }
 
     /**

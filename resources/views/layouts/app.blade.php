@@ -35,11 +35,14 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link navbar-brand" href="{{ route('states') }}" title="Preview">Clubs</a>
+                            <a class="nav-link navbar-brand" href="{{ route('clubs') }}" title="Preview">Clubs</a>
                         </li>
+                        
+                        @auth
                         <li class="nav-item">
                             <a class="nav-link navbar-brand" href="{{ url('/') }}" title="Preview">Classes</a>
                         </li>
+                        @endif
 
                         @guest
                             @if(Route::has('login'))

@@ -19,7 +19,7 @@ class GymLocation extends Model
 
     public function state()
     {
-        return $this->hasMany(State::class);
+        return $this->hasOne(State::class);
     }
 
     public function member()
