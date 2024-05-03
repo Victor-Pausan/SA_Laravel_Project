@@ -6,17 +6,15 @@
     <section class="container my-5">
         <h1 class="text-left mb-5">FIND A CLUB NEAR YOU</h1>
         <div class="form-inline justify-content-center" style="max-width: 450px;">
-            <select name="state" class="form-select mb-3 form-select-lg" aria-label="Default select example"
-                onchange="event.preventDefault();
-                document.getElementById('state-form').submit();">
-                <option selected>Choose a state</option>
-                @foreach ($states as $state)
-                    <option name="state" value="{{ $state->id }}">{{ $state->name }} </option>
-                @endforeach
-                <form id="state-form" action="{{ route('clubs.show', ['id' => '$state->id']) }}"" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </select>
+            <form method="GET">
+                <select name="state" class="form-select mb-3 form-select-lg" aria-label="Default select example"
+                    onchange="this.form.submit();">
+                    <option value="0" selected>All states</option>
+                    @foreach ($states as $state)
+                        <option name="state" value="{{ $state->id }}">{{ $state->name }} </option>
+                    @endforeach
+                </select>
+            </form>
         </div>
     </section>
 

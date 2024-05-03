@@ -50,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Member::class);
     }
+
+    public function isAdmin()
+    {
+        $admin_emails = config('settings.admin_emails');
+        if (in_array($this->email, $admin_emails)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

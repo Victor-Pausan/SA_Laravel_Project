@@ -28,6 +28,6 @@ class GymClass extends Model
 
     public function gymLocation()
     {
-        return $this->hasOne(GymLocation::class);
+        return $this->belongsTo(GymLocation::class);
     }
 }

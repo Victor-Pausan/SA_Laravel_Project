@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\StatesController;
+use App\Models\GymClass;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +21,8 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::redirect('/home', '/');
 
 Route::get('/', function () {
     return view('home');
@@ -40,4 +44,14 @@ Route::prefix('clubs')->group(function() {
 
 Route::middleware('auth')->group(function () {
     Route::get('/account', [AccountController::class, 'index'])->name("account");
+});
+
+Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/admin', [ClassesController::class, 'create'])->name('admin.create');
+    Route::post('/admin', [ClassesController::class, 'store'])->name('admin.store');
+    Route::delete('/admin/{id}', [ClassesController::class, 'destroy'])->name('admin.destroy');
+    Route::get('/admin/{id}', [ClassesController::class, 'edit'])->name('admin.edit');
+    Route::put('/admin/{id}', [ClassesController::class, 'update'])->name('admin.update');
 });

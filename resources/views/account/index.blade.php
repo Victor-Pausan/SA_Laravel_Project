@@ -6,7 +6,7 @@
     <section class="container my-5">
         <div class="account">
             <h1>Dashboard</h1>
-            <h3>Hello, User</h3>
+            <h3>Hello, {{ $user->name }}</h3>
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
                     <div class="d-flex justify-content-between align-items-center">
@@ -18,7 +18,7 @@
                                 <path
                                     d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
                             </svg>
-                            <h6>A second link item</h6>
+                            <h6>Edit profile</h6>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-arrow-right" viewBox="0 0 16 16">

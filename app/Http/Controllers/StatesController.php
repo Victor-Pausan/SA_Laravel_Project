@@ -11,9 +11,13 @@ class StatesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $states = State::all();
+
+        if($request->has('state') && $request->input('state') != '0'){
+            return redirect()->route('clubs.show', ['id' => $request->input('state')]);
+        }
 
         return view('clubs.index', ['states' => $states]);
     }
@@ -40,7 +44,7 @@ class StatesController extends Controller
     public function show(string $id)
     {
         $state = State::where('id', $id)->first();
-        $locations = GymLocation::where('state_id', $id)->get();
+        $locations = GymLocation::where('state_id', $state->id)->get();
         return view('clubs.show', ['locations' => $locations, 'state' => $state]);
     }
 

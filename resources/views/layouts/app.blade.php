@@ -39,8 +39,9 @@
                         </li>
                         
                         @auth
+                        {{-- @if(Auth::user() && auth()->user()->isAdmin()) --}}
                         <li class="nav-item">
-                            <a class="nav-link navbar-brand" href="{{ url('/') }}" title="Preview">Classes</a>
+                            <a class="nav-link navbar-brand" href="{{ route('classes.index') }}" title="Preview">Classes</a>
                         </li>
                         @endif
 
@@ -133,7 +134,7 @@
                         <h5>More Info</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2"><a href="{{  url('/') }}" class="nav-link p-0 text-muted">Home</a></li>
-                            <li class="nav-item mb-2"><a href="{{  url('/') }}" class="nav-link p-0 text-muted">Clubs</a></li>
+                            <li class="nav-item mb-2"><a href="{{  route('clubs') }}" class="nav-link p-0 text-muted">Clubs</a></li>
                             <li class="nav-item mb-2"><a href="{{  route('contact.index') }}" class="nav-link p-0 text-muted">Contact us</a></li>
                             <li class="nav-item mb-2"><a href="{{  route('about') }}" class="nav-link p-0 text-muted">About</a></li>
                         </ul>
