@@ -72,7 +72,9 @@ class ClassesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $class = GymClass::find($id);
+
+        return view('classes.show', ['class' => $class]);
     }
 
     /**

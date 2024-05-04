@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\StatesController;
@@ -47,6 +48,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+Route::get('/classes/{id}', [ClassesController::class, 'show'])->name('classes.show');
+
+Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin', [ClassesController::class, 'create'])->name('admin.create');
