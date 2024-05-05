@@ -40,6 +40,13 @@ class AccountController extends Controller
         //
     }
 
+    public function showMembership(Request $request)
+    {
+        $user = $request->user();
+
+        return $user->member->id;
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -10,19 +10,18 @@ class Member extends Model
     use HasFactory;
 
     public $fillable=[
-        'address',
         'membership_start_date',
         'membership_end_date', 
     ];
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function subscription()
     {
-        return $this->hasOne(Subscription::class);
+        return $this->belongsTo(Subscription::class);
     }
 
     public function memberFeedback()
@@ -32,6 +31,6 @@ class Member extends Model
 
     public function gymLocation()
     {
-        return $this->hasOne(GymLocation::class);
+        return $this->belongsTo(GymLocation::class);
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\GymClass;
+use App\Models\MemberFeedback;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -33,9 +36,29 @@ class FeedbackController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $classId)
     {
-        //
+        $validatedInput = $request->validate([
+            'comment' => 'required|string',
+            'rate' => 'required|int',
+        ]);
+
+        $memberFeedback = new MemberFeedback;
+
+        $class = GymClass::find($classId);
+
+        $member = $request->user();
+
+        $feedback = new Feedback;
+
+        $feedback->memberFeedback()->associate($memberFeedback);
+        $class->memberFeedback()->associate($memberFeedback);
+        $member->memberFeedback()->associate($memberFeedback);
+
+        $feedback->comment = $validatedInput['comment'];
+        $feedback->rating = $validatedInput['rate'];
+
+        return redirect()->route('feedback.create')->with('success', 'Feedback added succesfuly!');
     }
 
     /**
@@ -43,7 +66,7 @@ class FeedbackController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

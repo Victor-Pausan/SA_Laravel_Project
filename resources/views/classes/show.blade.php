@@ -48,7 +48,11 @@
             <div class="container">
                 <div class="py-3 d-flex justify-content-between">
                     <h1>Members Feedback</h1>
-                    <a href="{{ route('feedback.create').'?class='.$class->id }}" class="btn btn-primary btn-lg">Add your feedback!</a>
+                    @if(auth()->user()->member != null)
+                        <a href="{{ route('feedback.create').'?class='.$class->id }}" class="btn btn-primary btn-lg">Add your feedback!</a>
+                    @else
+                        <a href="{{ route('memberships').'?class='.$class->id }}" class="btn btn-primary btn-lg">Become a member to add feedback</a>
+                    @endif
                 </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">

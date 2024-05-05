@@ -13,9 +13,21 @@
         <h1 class="card-title">ELITE TRAINING.</h1>
         <h1 class="card-title">UNBEATABLE RESULTS.</h1>
         <p class="card-text">Join now or stay average.</p>
+        @auth
+            @if(auth()->user()->member != null)
+            <button type="button" class="btn btn-light btn-lg">
+                <a href="{{ route('classes.index') }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">See classes.</a>
+            </button>
+            @else
+            <button type="button" class="btn btn-light btn-lg">
+                <a href="{{ route('memberships') }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">View membership options.</a>
+            </button>
+            @endif
+        @else
         <button type="button" class="btn btn-light btn-lg">
             <a href="{{ route('register') }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">Get started.</a>
         </button>
+        @endif
     </span>
 </section>
 <section class="secondary-section">

@@ -38,19 +38,22 @@ Auth::routes();
 
 Route::get('/memberships', [MembershipController::class, 'index'])->name('memberships');
 
-Route::prefix('clubs')->group(function() {
+Route::prefix('clubs')->group(function () {
     Route::get('/', [StatesController::class, 'index'])->name('clubs');
     Route::get('/{id}', [StatesController::class, 'show'])->name('clubs.show');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/account', [AccountController::class, 'index'])->name("account");
+    //Route::get('/account/membership', [AccountController::class, 'showMembership'])->name('account.membership');
+
+    Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+    Route::get('/classes/{id}', [ClassesController::class, 'show'])->name('classes.show');
+
+    Route::get('/memberships/{id}', [MembershipController::class, 'create'])->name('membership.create');
+    Route::post('/membership/created', [MembershipController::class, 'store'])->name('membership.success');
+    Route::get('/membership/created', [MembershipController::class, 'show'])->name('membership.show');
 });
-
-Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
-Route::get('/classes/{id}', [ClassesController::class, 'show'])->name('classes.show');
-
-Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin', [ClassesController::class, 'create'])->name('admin.create');
@@ -58,4 +61,11 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::delete('/admin/{id}', [ClassesController::class, 'destroy'])->name('admin.destroy');
     Route::get('/admin/{id}', [ClassesController::class, 'edit'])->name('admin.edit');
     Route::put('/admin/{id}', [ClassesController::class, 'update'])->name('admin.update');
+});
+
+Route::group((['middleware' => ['auth', 'member']]), function () {
+    Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
+    Route::post('/feedback/{classId}', [FeedbackController::class, 'store'])->name('feedback.store');
+
+    Route::get('/account/membership', [AccountController::class, 'showMembership'])->name('account.membership');
 });

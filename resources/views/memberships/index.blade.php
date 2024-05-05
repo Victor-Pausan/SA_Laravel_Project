@@ -30,7 +30,7 @@
                         <li><i class="fas fa-check text-success mr-2"></i>No additional perks or services included</li>
                     </ul>
                     @auth
-                        <a href="{{ url('/') }}" class="btn btn-dark">Choose</a>
+                        <a href="{{ route('membership.create', ['id' => 1]) }}" class="btn btn-dark">Choose</a>
                     @else
                         @if(Route::has('login'))
                             <a href="{{ route('login') }}" class="btn btn-dark">Choose</a>
@@ -50,7 +50,7 @@
                         <li><i class="fas fa-check text-success mr-2"></i>Access to exclusive member events or workshops</li>
                     </ul>
                     @auth
-                        <a href="{{ url('/') }}" class="btn btn-dark">Choose</a>
+                        <a href="{{ route('membership.create', ['id' => 2]) }}" class="btn btn-dark">Choose</a>
                     @else
                         @if(Route::has('login'))
                             <a href="{{ route('login') }}" class="btn btn-dark">Choose</a>

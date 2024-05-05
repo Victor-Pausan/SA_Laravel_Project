@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GymLocation;
+use App\Models\Member;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 
 class MembershipController extends Controller
@@ -17,9 +20,12 @@ class MembershipController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
-        //
+        $subscription = Subscription::findOrFail($id);
+        $locations = GymLocation::all();
+
+        return view('memberships.create', ['subscription' => $subscription, 'locations' => $locations]);
     }
 
     /**
@@ -27,15 +33,35 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedInput = $request->validate([
+            'location' => 'required',
+            'subscription' => 'required',
+        ]);
+
+        $user = $request->user();
+
+        $location = GymLocation::find($validatedInput['location']);
+
+        $subscription = Subscription::find($validatedInput['subscription']);
+
+        $member = new Member;
+        $member->user()->associate($user);
+        $member->subscription()->associate($subscription);
+        $member->gymLocation()->associate($location);
+
+        $member->membership_start_date = date('Y-m-d');
+        $member->membership_end_date = date('Y-m-d', strtotime('+1 month'));
+        $member->save();
+
+        return redirect()->route('membership.show');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        return view('memberships.success');
     }
 
     /**
