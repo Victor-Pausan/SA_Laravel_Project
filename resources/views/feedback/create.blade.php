@@ -16,7 +16,7 @@
                 <x-alert type="success" message="{{session('success')}}"/>
                 @endif
             </div>
-            <div class="col-7">
+            <div class="col-5">
                 <form class="form" action="{{ route('feedback.store', ['classId' => $class->id]) }}" method="POST">
                     @csrf
                     <div class="form-floating">

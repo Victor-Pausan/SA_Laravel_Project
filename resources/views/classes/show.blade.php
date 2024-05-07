@@ -5,9 +5,9 @@
 @section('content')
     <section class="main-section">
         <picture class="picture">
-            <source media="(min-width: 1080px)" srcset="{{ asset('storage/images/' . $class->picture_path) }}">
-            <source media="(min-width: 790px)" srcset="{{ asset('storage/images/2' . $class->picture_path) }}">
-            <img src="{{ asset('storage/images/3' . $class->picture_path) }}">
+            <source media="(min-width: 1080px)" srcset={{ asset('storage/images/' . str_replace(' ', '_', $class->picture_path)) }}>
+            <source media="(min-width: 790px)" srcset={{ asset('storage/images/2' . str_replace(' ', '_', $class->picture_path)) }}>
+            <img src={{ asset('storage/images/3' . str_replace(' ', '_', $class->picture_path)) }}>
         </picture>
         <span class="card-body text-start main-card">
             <h1 class="card-title main-title">{{ $class->name }}</h1>
@@ -27,13 +27,13 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide explore-slideshow" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="2000">
-                    <img src="{{ asset('storage/images/3car' . $class->picture_path) }}" class="d-block w-100">
+                    <img src="{{ asset('storage/images/3car' . str_replace(' ', '_', $class->picture_path)) }}" class="d-block w-100">
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
-                    <img src="{{ asset('storage/images/2car' . $class->picture_path) }}" class="d-block w-100">
+                    <img src="{{ asset('storage/images/2car' . str_replace(' ', '_', $class->picture_path)) }}" class="d-block w-100">
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
-                    <img src="{{ asset('storage/images/1car' . $class->picture_path) }}" class="d-block w-100">
+                    <img src="{{ asset('storage/images/1car' . str_replace(' ', '_', $class->picture_path)) }}" class="d-block w-100">
                 </div>
             </div>
         </div>
@@ -54,6 +54,15 @@
                     <x-alert type="success" message="{{session('success')}}"/>
                     @endif
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    @if($class->memberFeedbacks->isEmpty())
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">No feedbacks yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     @foreach($class->memberFeedbacks as $memberFeedback)
                     <div class="col">
                         <div class="card">
