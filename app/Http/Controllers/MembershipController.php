@@ -83,8 +83,19 @@ class MembershipController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $user = $request->user();
+
+        $member = $user->member;
+
+        foreach($member->memberFeedbacks as $memeberFeedback) {
+            $memeberFeedback->feedback->delete();
+            $memeberFeedback->delete();
+        }
+
+        $member->delete();
+
+        return redirect()->route('account')->with('success', 'Membership deleted successfully!');
     }
 }

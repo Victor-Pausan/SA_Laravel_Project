@@ -12,16 +12,16 @@ class MemberFeedback extends Model
     protected $table = 'member_feedbacks';
     public function member()
     {
-        return $this->hasMany(Member::class);
+        return $this->belongsTo(Member::class);
     }
 
     public function feedback()
     {
-        return $this->hasMany(Feedback::class);
+        return $this->belongsTo(Feedback::class);
     }
 
     public function class()
     {
-        return $this->hasMany(GymClass::class);
+        return $this->belongsTo(GymClass::class);
     }
 }

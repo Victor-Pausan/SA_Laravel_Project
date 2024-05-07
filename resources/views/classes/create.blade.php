@@ -110,18 +110,31 @@
                             <div class="col-md-3">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $class->gymLocation->name }}</h5>
-                                    <form class="delete-form" action="{{route('admin.destroy', ['id' => $class->id])}}" method="POST">
+                                    <form class="mb-3" action="{{route('admin.destroy', ['id' => $class->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                            <button type="sumbit" id="noselect" class="delete-btn">
-                                                <span class="text">Delete</span>
-                                                <span class="icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                        <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                                                        </path>
-                                                    </svg>
-                                                </span>
-                                            </button>
+                                        <a href="#myModal" class="btn btn-danger" data-bs-toggle="modal">Delete</a>
+
+                                        <div id="myModal" class="modal fade">
+                                            <div class="modal-dialog modal-confirm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Are you sure you want to delete this?</h4>
+                                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                                            aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>This process cannot be
+                                                            undone.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-info"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
                                     <form method="GET" action="{{ route('admin.edit', ['id' => $class->id]) }}">
                                         <button type="submit" class="btn btn-warning">Edit</button>

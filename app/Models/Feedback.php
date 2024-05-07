@@ -9,13 +9,15 @@ class Feedback extends Model
 {
     use HasFactory;
 
+    protected $table = 'feedbacks';
+
     public $fillable=[
         'rating',
         'comment',
     ];
 
-    public function memberFeedback()
+    public function memberFeedbacks()
     {
-        return $this->belongsTo(MemberFeedback::class);
+        return $this->hasMany(MemberFeedback::class);
     }
 }

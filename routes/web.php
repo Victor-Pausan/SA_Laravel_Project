@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/memberships/{id}', [MembershipController::class, 'create'])->name('membership.create');
     Route::post('/membership/created', [MembershipController::class, 'store'])->name('membership.success');
     Route::get('/membership/created', [MembershipController::class, 'show'])->name('membership.show');
+
+    Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -66,6 +68,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Route::group((['middleware' => ['auth', 'member']]), function () {
     Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
     Route::post('/feedback/{classId}', [FeedbackController::class, 'store'])->name('feedback.store');
+    Route::delete('/feedback/{id}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
 
-    Route::get('/account/membership', [AccountController::class, 'showMembership'])->name('account.membership');
+    Route::get('/account/membership', [AccountController::class, 'edit'])->name('account.membership');
+    Route::put('/account/membership', [AccountController::class, 'update'])->name('account.membership.update');
+    Route::get('/account/feedbacks', [FeedbackController::class, 'show'])->name('account.feedbacks');
+    Route::delete('account/membership', [MembershipController::class, 'destroy'])->name('account.membership.destroy');
 });

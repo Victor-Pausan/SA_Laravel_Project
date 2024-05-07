@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\GymClass;
 use App\Models\GymLocation;
+use App\Models\MemberFeedback;
 use Illuminate\Http\Request;
 
 class ClassesController extends Controller

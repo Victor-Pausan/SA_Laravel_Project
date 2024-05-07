@@ -28,9 +28,8 @@ class FeedbackController extends Controller
             $class = GymClass::findOrFail($classId);
             return view('feedback.create', ['class' => $class]);
         }else {
-            return "Class not found.";
-        }
-        
+            return 'Class not found';
+        } 
     }
 
     /**
@@ -47,26 +46,33 @@ class FeedbackController extends Controller
 
         $class = GymClass::find($classId);
 
-        $member = $request->user();
+        $member = $request->user()->member;
 
         $feedback = new Feedback;
 
-        $feedback->memberFeedback()->associate($memberFeedback);
-        $class->memberFeedback()->associate($memberFeedback);
-        $member->memberFeedback()->associate($memberFeedback);
-
         $feedback->comment = $validatedInput['comment'];
         $feedback->rating = $validatedInput['rate'];
+        $feedback->save();
 
-        return redirect()->route('feedback.create')->with('success', 'Feedback added succesfuly!');
+        $feedback->memberFeedbacks()->save($memberFeedback);
+        $class->memberFeedbacks()->save($memberFeedback);
+        $member->memberFeedbacks()->save($memberFeedback);
+
+        return redirect()->route('classes.show', ['id' => $classId])->with('success', 'Feedback added succesfuly!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        
+        $user = $request->user();
+
+        $member = $user->member;
+
+        $memberFeedbacks = $member->memberFeedbacks;
+
+        return view('feedback.show', ['memberFeedbacks' => $memberFeedbacks]);
     }
 
     /**
@@ -90,6 +96,13 @@ class FeedbackController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $memberFeedback = MemberFeedback::find($id);
+
+        $feedback = $memberFeedback->feedback;
+        $feedback->delete();
+
+        $memberFeedback->delete();
+
+        return redirect()->route('account.feedbacks')->with('success', 'Feedback deleted successfully!');
     }
 }

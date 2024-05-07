@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -40,34 +41,50 @@ class AccountController extends Controller
         //
     }
 
-    public function showMembership(Request $request)
-    {
-        $user = $request->user();
-
-        return $user->member->id;
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        $user = $request->user();
+
+        $state = State::find($user->member->gymLocation->state_id);
+
+        return view('account.membership', ['member' => $user->member, 'state' => $state]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $validatedInput = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $user = $request->user();
+
+        $user->name = $validatedInput['name'];
+        $user->email = $validatedInput['email'];
+        $user->save();
+
+        $state = State::find($user->member->gymLocation->state_id);
+
+        return redirect()->route('account.membership', ['member' => $user->member, 'state' => $state])->with('success', 'Account updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $user = $request->user();
+
+        $user->delete();
+
+        $member = $user->member;
+
+        return redirect()->route('home')->with('success', 'Account deleted successfully!');
     }
 }

@@ -21,9 +21,9 @@ class GymClass extends Model
         'picture_path',
     ];
 
-    public function memberFeedback()
+    public function memberFeedbacks()
     {
-        return $this->belongsTo(MemberFeedback::class);
+        return $this->hasMany(MemberFeedback::class, 'class_id');
     }
 
     public function gymLocation()

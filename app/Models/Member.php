@@ -24,9 +24,9 @@ class Member extends Model
         return $this->belongsTo(Subscription::class);
     }
 
-    public function memberFeedback()
+    public function memberFeedbacks()
     {
-        return $this->belongsTo(MemberFeedback::class);
+        return $this->hasMany(MemberFeedback::class);
     }
 
     public function gymLocation()
