@@ -19,6 +19,12 @@
     margin-right: auto;
 }
 
+.error-message {
+    color: darkred;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+}
+
 /* Bootstrap overrides */
 
 .navbar {

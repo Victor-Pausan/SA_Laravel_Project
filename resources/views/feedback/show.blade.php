@@ -9,6 +9,15 @@
             <x-alert type="success" message="{{ session('success') }}" />
         @endif
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @if ($memberFeedbacks->isEmpty())
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">No feedbacks yet.</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
             @foreach ($memberFeedbacks as $memberFeedback)
                 <div class="col">
                     <div class="card">

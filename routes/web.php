@@ -25,6 +25,11 @@ use Illuminate\Support\Facades\Auth;
 
 Route::redirect('/home', '/');
 
+Route::get('/lang/{locale}', function ($locale) {
+    session(['locale' => $locale]);
+    return redirect()->back();
+})->name('lang');
+
 Route::get('/', function () {
     return view('home');
 })->name('home');

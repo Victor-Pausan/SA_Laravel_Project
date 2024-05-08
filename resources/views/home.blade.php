@@ -76,9 +76,6 @@
                   <div class="col-md-6">
                       <h2>Tribeca</h2>
                   </div>
-                  <div class="col-md-6 text-md-end">
-                      <h2 class="temperature" id="10007">60°F</h2>
-                  </div>
               </div>
               <div class="row">
                   <div class="col">
@@ -94,9 +91,6 @@
               <div class="row">
                   <div class="col-md-6">
                       <h2>Brickell Heights</h2>
-                  </div>
-                  <div class="col-md-6 text-md-end">
-                      <h2 class="temperature" id="33131">60°F</h2>
                   </div>
               </div>
               <div class="row">
@@ -114,9 +108,6 @@
                   <div class="col-md-6">
                       <h2>West Hollywood</h2>
                   </div>
-                  <div class="col-md-6 text-md-end">
-                      <h2 class="temperature" id="90069">60°F</h2>
-                  </div>
               </div>
               <div class="row">
                   <div class="col">
@@ -131,9 +122,6 @@
               <div class="row">
                   <div class="col-md-6">
                       <h2>South Beach</h2>
-                  </div>
-                  <div class="col-md-6 text-md-end">
-                      <h2 class="temperature" id="33139">60°F</h2>
                   </div>
               </div>
               <div class="row">

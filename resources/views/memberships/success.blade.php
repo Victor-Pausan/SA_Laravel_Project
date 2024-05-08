@@ -1,8 +1,24 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@vite(['resources/css/login-page.css'])
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/login-page.css'])
+</head>
+
+<body>
     <div id="app">
         <section class="vh-100">
             <div class="container-fluid">
@@ -24,10 +40,9 @@
     </div>
     <script>
         window.setTimeout(function() {
-
-            // Move to a new location or you can do something else
             window.location.href = "/account";
-
         }, 1500);
     </script>
-@endsection
+</body>
+
+</html>
