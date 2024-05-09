@@ -19,6 +19,9 @@
                     <div class="col-md-12"><label class="labels">Email</label><input name="email" type="text"
                             class="form-control" placeholder="{{ $member->user->email }}"
                             value="{{ $member->user->email }}"></div>
+                    <div class="col-md-12"><label class="labels">Membership type</label><input name="name" type="text"
+                            class="form-control" placeholder="{{ $member->subscription->type }}" value="{{ $member->subscription->type }}" disabled readonly>
+                    </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Gym location</label><input type="text"

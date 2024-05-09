@@ -29,7 +29,7 @@
 
                             <form method="POST" action="{{ route('register') }}" style="width: 23rem;">
                                 @csrf
-                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register</h3>
+                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">{{__('Register')}}</h3>
 
                                 <div class="name form-floating mb-3">
                                     <input type="text" id="name" name="name"
@@ -39,7 +39,7 @@
                                         <div id="name-error" class="error-message">{{ $message }}</div>
                                     @enderror
 
-                                    <label for="name" id="email-label">Name:</label>
+                                    <label for="name" id="email-label">{{__('Name')}}</label>
                                 </div>
 
                                 <div class="email form-floating mb-3">
@@ -50,7 +50,7 @@
                                         <div id="email-error" class="error-message">{{ $message }}</div>
                                     @enderror
 
-                                    <label for="email" id="email-label">Email Address:</label>
+                                    <label for="email" id="email-label">{{__('Email Address')}}</label>
                                 </div>
 
                                 <div class="password form-floating mb-3">
@@ -61,18 +61,18 @@
                                         <div id="password-error" class="error-message">{{ $message }}</div>
                                     @enderror
 
-                                    <label for="email" id="email-label">Password</label>
+                                    <label for="email" id="email-label">{{__('Password')}}</label>
                                 </div>
 
                                 <div class="password-confirm form-floating mb-3">
                                     <input type="password" id="password-confirm" name="password_confirmation"
                                         class="form-control"
                                         autocomplete="new-password">
-                                    <label for="password-confirm" id="email-label">Confirm Password</label>
+                                    <label for="password-confirm" id="email-label">{{__('Confirm Password')}}</label>
                                 </div>
 
                                 <div class="pt-1 mb-4">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">{{__('Register')}}</button>
                                 </div>
 
                                 <p>Already have an account? <a href="{{ route('login') }}" class="link-info">Log In here</a></p>

@@ -8,9 +8,9 @@
         @if (session('success'))
             <x-alert type="success" message="{{ session('success') }}" />
         @endif
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-3">
             @if ($memberFeedbacks->isEmpty())
-                <div class="col mb-3">
+                <div class="col">
                     <div class="card">
                         <div class="card-body">
                             <p class="card-text">No feedbacks yet.</p>

@@ -29,7 +29,7 @@
 
                             <form method="POST" action="{{ route('login') }}" style="width: 23rem;">
                                 @csrf
-                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">{{__('Log In')}}</h3>
 
                                 <div class="email form-floating mb-3">
                                     <input type="text" id="email" name="email"
@@ -39,7 +39,7 @@
                                         <div id="email-error" class="error-message">{{ $message }}</div>
                                     @enderror
 
-                                    <label for="email" id="email-label">Email Address:</label>
+                                    <label for="email" id="email-label">{{__('Email Address')}}:</label>
                                 </div>
 
                                 <div class="password form-floating mb-3">
@@ -50,19 +50,19 @@
                                         <div id="password-error" class="error-message">{{ $message }}</div>
                                     @enderror
 
-                                    <label for="email" id="email-label">Password</label>
+                                    <label for="email" id="email-label">{{__('Password')}}</label>
                                 </div>
 
                                 <div class="pt-1 mb-4">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">{{__('Login')}}</button>
                                 </div>
 
                                 @if (Route::has('password.request'))
                                     <p class="small mb-5 pb-lg-2"><a class="text-muted"
-                                            href="{{ route('password.request') }}">Forgot password?</a></p>
+                                            href="{{ route('password.request') }}">{{__('Forgot password?')}}</a></p>
                                 @endif
 
-                                <p>Don't have an account? <a href="{{ route('register') }}" class="link-info">Register here</a></p>
+                                <p>Don't have an account? <a href="{{ route('register') }}" class="link-info">{{__('Register here')}}</a></p>
 
                             </form>
                         </div>

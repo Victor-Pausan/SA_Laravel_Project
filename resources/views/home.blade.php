@@ -25,7 +25,7 @@
             @endif
         @else
         <button type="button" class="btn btn-light btn-lg">
-            <a href="{{ route('register') }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">Get started.</a>
+            <a href="{{ route('register') }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">{{__('Get started')}}.</a>
         </button>
         @endif
     </span>

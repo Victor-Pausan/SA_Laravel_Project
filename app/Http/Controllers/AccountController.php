@@ -71,7 +71,7 @@ class AccountController extends Controller
 
         $state = State::find($user->member->gymLocation->state_id);
 
-        return redirect()->route('account.membership', ['member' => $user->member, 'state' => $state])->with('success', 'Account updated successfully!');
+        return redirect()->route('account', ['member' => $user->member, 'state' => $state])->with('success', 'Account updated successfully!');
     }
 
     /**
