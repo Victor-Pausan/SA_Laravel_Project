@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Route::group((['middleware' => ['auth', 'member']]), function () {
     Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
     Route::post('/feedback/{classId}', [FeedbackController::class, 'store'])->name('feedback.store');
-    Route::delete('/feedback/{id}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
+    Route::delete('/feedback/{id}', [FeedbackController::class, 'destroy'])->middleware('coresponding.member')->name('feedback.destroy');
 
     Route::get('/account/membership', [AccountController::class, 'edit'])->name('account.membership');
     Route::put('/account/membership', [AccountController::class, 'update'])->name('account.membership.update');
