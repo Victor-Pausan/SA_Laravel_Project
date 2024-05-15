@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Member;
 use App\Models\Feedback;
 use App\Models\GymClass;
 use App\Models\GymLocation;
@@ -128,7 +129,15 @@ class ClassesController extends Controller
      */
     public function destroy(string $id)
     {
-        $class = GymClass::find($id);
+        $class = GymClass::findOrFail($id);
+
+        $memberFeedbacks = $class->memberFeedbacks;
+
+        foreach($memberFeedbacks as $memberFeedback){
+            $memberFeedback->feedback->delete();
+            $memberFeedback->delete();
+        }
+        
         $class->delete();
 
         return redirect()->route('admin.create')->with('danger', 'Class deleted succesfully!');

@@ -83,8 +83,6 @@ class AccountController extends Controller
 
         $user->delete();
 
-        $member = $user->member;
-
         return redirect()->route('home')->with('success', 'Account deleted successfully!');
     }
 }

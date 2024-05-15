@@ -110,12 +110,12 @@
                             <div class="col-md-3">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $class->gymLocation->name }}</h5>
-                                    <form class="mb-3" action="{{route('admin.destroy', ['id' => $class->id])}}" method="POST">
+                                    <form id="delete-form-{{ $class->id }}" class="mb-3" action="{{ route('admin.destroy', ['id' => $class->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="#myModal" class="btn btn-danger" data-bs-toggle="modal">Delete</a>
+                                        <a href="#myModal-{{ $class->id }}" class="btn btn-danger" data-bs-toggle="modal">Delete</a>
 
-                                        <div id="myModal" class="modal fade">
+                                        <div id="myModal-{{ $class->id }}" class="modal fade">
                                             <div class="modal-dialog modal-confirm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -124,8 +124,7 @@
                                                             aria-hidden="true">&times;</button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>This process cannot be
-                                                            undone.</p>
+                                                        <p>This process cannot be undone.</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-info"

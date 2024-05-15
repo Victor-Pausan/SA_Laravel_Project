@@ -55,9 +55,9 @@
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="#myModal" class="btn btn-danger" data-bs-toggle="modal">Delete</a>
+                                    <a href="#myModal-{{$memberFeedback->id}}" class="btn btn-danger" data-bs-toggle="modal">Delete</a>
 
-                                    <div id="myModal" class="modal fade">
+                                    <div id="myModal-{{$memberFeedback->id}}" class="modal fade">
                                         <div class="modal-dialog modal-confirm">
                                             <div class="modal-content">
                                                 <div class="modal-header">
