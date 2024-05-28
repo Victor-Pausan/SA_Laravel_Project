@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Models\CustomerQuestion;
+use App\Models\CustomerQuestion;
 
 class ContactController extends Controller
 {
@@ -36,7 +36,13 @@ class ContactController extends Controller
             'message' => 'required|max:255',
         ]);
 
-        $question = CustomerQuestion::create($validated);
+        $question = new CustomerQuestion;
+        $question->first_name = $validated['first-name'];
+        $question->last_name = $validated['last-name'];
+        $question->email = $validated['email'];
+        $question->subject = $validated['subject'];
+        $question->message = $validated['message'];
+        $question->save();
 
         return redirect()->route('contact.index')->with('success', 'Question submited succesfully!');
     }

@@ -24,6 +24,12 @@
           <br>
           <h2>Call Us</h2>
           <p>+1 (207) 401 1908</p>
+          <br>
+          <h2>Sponsors</h2>
+          <a href="https://gsdgroup.net/" class="link-secondary link-offset-2 link-underline link-underline-opacity-50" target="_blank">GSD</a>
+          <a href="http://www.csac.ro" class="link-secondary link-offset-2 link-underline link-underline-opacity-50" target="_blank">CSAC</a>
+          <a href="https://scanstart.ro/" class="link-secondary link-offset-2 link-underline link-underline-opacity-50" target="_blank">Scanstart</a>
+          <a href="https://graffino.com/" class="link-secondary link-offset-2 link-underline link-underline-opacity-50" target="_blank">Graffino</a>
         </div>
       </div>
     </div>

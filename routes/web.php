@@ -50,7 +50,6 @@ Route::prefix('clubs')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/account', [AccountController::class, 'index'])->name("account");
-    //Route::get('/account/membership', [AccountController::class, 'showMembership'])->name('account.membership');
 
     Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
     Route::get('/classes/{id}', [ClassesController::class, 'show'])->name('classes.show');
